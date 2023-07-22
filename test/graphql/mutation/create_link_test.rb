@@ -5,16 +5,12 @@ class Mutations::CreateLinkTest < ActiveSupport::TestCase
     Mutations::CreateLink.new(object: nil, field: nil, context: { current_user: user}).resolve(**args)
   end
 
+  def create_user
+    User.create name: 'Test User', email: 'email@example.com', password: '[omitted]'
+  end
+
   test 'create a new link' do
-    user = Mutations::CreateUser.new(object: nil, field: nil, context: {}).resolve(
-      name: 'Test User',
-      auth_provider: {
-        credentials: {
-          email: 'email@example.com',
-          password: '[omitted]'
-        }
-      }
-    )
+    user = create_user
 
     link = perform(
       user: user,

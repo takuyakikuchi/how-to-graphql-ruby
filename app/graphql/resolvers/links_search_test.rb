@@ -6,7 +6,6 @@ module Resolvers
       ::Resolvers::LinksSearch.call(nil, args, nil)
     end
 
-    # those helpers should be handled with something like `factory_bot` gem
     def create_user
       User.create name: 'test', email: 'test@example.com', password: '123456'
     end
